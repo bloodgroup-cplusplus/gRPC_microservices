@@ -2,11 +2,13 @@ package main
 
 import "context"
 
+//price fetcher is an interface that can fetch a price
 type PriceFetcher interface {
   FetchPrice(context.Context,string) (float64,error)
 }
 
 
+// priceFetcher implements the pricefetcher interface
 type priceFetcher struct {
 
 }
