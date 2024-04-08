@@ -1,6 +1,9 @@
 package main
 
-import "context"
+import (
+  "context"
+  "fmt"
+)
 
 //price fetcher is an interface that can fetch a price
 type PriceFetcher interface {
@@ -31,13 +34,15 @@ var priceMocks = map[string]float64 {
 }
 
 
-func MockPriceFetcher(ctx context.Contex,ticker string) (float 64,error) {
+func MockPriceFetcher(ctx context.Contex,ticker string) (float64,error) {
 
   price, ok := priceMocks[ticker]
 
    if !ok {
     return price,fmt.Errorf("The given ticker (%s) is not supported",ticker)
   }
+
+  return price,nil
 
 }
 
