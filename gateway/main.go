@@ -9,8 +9,8 @@ import (
 	"github.com/bloodgroup-cplusplus/gRPC_microservices/common"
 )
 
-const (
-	httpAddr = common.EnvString("HTTP_ADDR",":8080")
+var (
+	httpAddr = common.EnvString("HTTP_ADDR",":3000")
 )
 
 func main() {
