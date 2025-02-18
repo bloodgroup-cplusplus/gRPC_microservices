@@ -3,10 +3,14 @@ package main
 import (
 	"log"
 	"net/http"
+
+	_ "github.com/joho/godotenv/autoload"
+
+	"github.com/bloodgroup-cplusplus/gRPC_microservices/common"
 )
 
 const (
-	httpAddr = ":8080"
+	httpAddr = common.EnvString("HTTP_ADDR",":8080")
 )
 
 func main() {
