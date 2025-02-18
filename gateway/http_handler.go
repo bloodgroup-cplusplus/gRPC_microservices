@@ -1,4 +1,5 @@
-package main 
+package main
+
 import "net/http"
 
 type handler struct {
@@ -13,7 +14,7 @@ func NewHandler () *handler {
 
 
 func (h *handler) registerRoutes(mux *http.ServeMux) {
-	mux.HandleFunc("POST/api/customers/{customerID}/orders",h.)
+	mux.HandleFunc("POST/api/customers/{customerID}/orders",h.HandleCreateOrder)
 
 
 }
