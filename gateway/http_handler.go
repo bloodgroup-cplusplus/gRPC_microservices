@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/bloodgroup-cplusplus/gRPC_microservices/common"
 	pb "github.com/bloodgroup-cplusplus/gRPC_microservices/common/api"
 )
 
@@ -28,7 +29,12 @@ func (h *handler) registerRoutes(mux *http.ServeMux) {
 
 func (h *handler) HandleCreateOrder (w http.ResponseWriter, r *http.Request) {
 	customerID := r.PathValue("customerID")
-	
+	var items [] *pb.ItemsWithQuantity
+	if err := common.ReadJSON(r,&items); err !=nil {
+		common.WriteError(w,http.StatusBadRequest,err.Error())
+		return
+	}
+
 
 	h.client.CreateOrder(r.Context(),&pb.CreateOrderRequest{
 		CustomerID:customerID ,
